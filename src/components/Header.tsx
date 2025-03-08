@@ -7,7 +7,12 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import AuthButtons from "@/components/auth/AuthButtons";
 import UserProfile from "@/components/auth/UserProfile";
-import AuthModal from "@/components/auth/AuthModal";
+import dynamic from "next/dynamic";
+
+// Dynamically import AuthModal to prevent hydration issues
+const AuthModal = dynamic(() => import("@/components/auth/AuthModal"), {
+  ssr: false,
+});
 
 interface HeaderProps {
   isAuthenticated?: boolean;
@@ -39,13 +44,16 @@ const Header = ({
   const [activeAuthModal, setActiveAuthModal] = useState<
     "login" | "signup" | null
   >(null);
+  const [showModal, setShowModal] = useState(false);
 
   const handleOpenLoginModal = () => {
     setActiveAuthModal("login");
+    setShowModal(true);
   };
 
   const handleOpenSignupModal = () => {
     setActiveAuthModal("signup");
+    setShowModal(true);
   };
 
   const toggleMenu = () => {
@@ -194,11 +202,14 @@ const Header = ({
       )}
 
       {/* Auth Modal */}
-      {activeAuthModal && (
+      {showModal && (
         <AuthModal
-          isOpen={activeAuthModal !== null}
-          onClose={() => setActiveAuthModal(null)}
-          defaultTab={activeAuthModal}
+          isOpen={showModal}
+          onClose={() => {
+            setShowModal(false);
+            setActiveAuthModal(null);
+          }}
+          defaultTab={activeAuthModal || "login"}
           onLoginSuccess={handleLoginSuccess}
           onSignupSuccess={handleSignupSuccess}
           isArabic={isArabic}

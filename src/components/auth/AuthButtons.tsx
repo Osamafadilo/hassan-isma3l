@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+
 import { LogIn, UserPlus } from "lucide-react";
 
 interface AuthButtonsProps {
@@ -38,33 +38,25 @@ const AuthButtons = ({
       className={`flex items-center ${isArabic ? "space-x-reverse space-x-4" : "space-x-4"} bg-background ${className}`}
       dir={isArabic ? "rtl" : "ltr"}
     >
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={handleLoginClick}
-            className="flex items-center gap-2"
-          >
-            <LogIn className="h-4 w-4" />
-            <span>{isArabic ? "تسجيل الدخول" : "Login"}</span>
-          </Button>
-        </DialogTrigger>
-      </Dialog>
+      <Button
+        variant="outline"
+        size="sm"
+        onClick={handleLoginClick}
+        className="flex items-center gap-2"
+      >
+        <LogIn className="h-4 w-4" />
+        <span>{isArabic ? "تسجيل الدخول" : "Login"}</span>
+      </Button>
 
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button
-            variant="default"
-            size="sm"
-            onClick={handleSignupClick}
-            className="flex items-center gap-2"
-          >
-            <UserPlus className="h-4 w-4" />
-            <span>{isArabic ? "إنشاء حساب" : "Sign Up"}</span>
-          </Button>
-        </DialogTrigger>
-      </Dialog>
+      <Button
+        variant="default"
+        size="sm"
+        onClick={handleSignupClick}
+        className="flex items-center gap-2"
+      >
+        <UserPlus className="h-4 w-4" />
+        <span>{isArabic ? "إنشاء حساب" : "Sign Up"}</span>
+      </Button>
     </div>
   );
 };

@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import connectToDatabase from "@/lib/mongodb";
-import Review from "@/models/Review";
-import Service from "@/models/Service";
-import Provider from "@/models/Provider";
+import connectToDatabase from "@/backend/lib/mongodb";
+import Review from "@/backend/models/Review";
+import Service from "@/backend/models/Service";
+import Provider from "@/backend/models/Provider";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
+import { authOptions } from "@/backend/lib/auth";
 
 export async function POST(req: NextRequest) {
   try {

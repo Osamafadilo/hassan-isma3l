@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import connectToDatabase from "@/lib/mongodb";
-import Provider from "@/models/Provider";
-import Service from "@/models/Service";
-import Review from "@/models/Review";
+import connectToDatabase from "@/backend/lib/mongodb";
+import Provider from "@/backend/models/Provider";
+import Service from "@/backend/models/Service";
+import Review from "@/backend/models/Review";
 import mongoose from "mongoose";
 
 export async function GET(

@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import connectToDatabase from "@/lib/mongodb";
-import Order from "@/models/Order";
+import connectToDatabase from "@/backend/lib/mongodb";
+import Order from "@/backend/models/Order";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
+import { authOptions } from "@/backend/lib/auth";
 import mongoose from "mongoose";
 
 export async function GET(

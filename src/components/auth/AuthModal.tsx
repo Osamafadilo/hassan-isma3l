@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect } from "react";
+
 import React, { useState } from "react";
 import {
   Dialog,
@@ -22,7 +24,7 @@ interface AuthModalProps {
 }
 
 const AuthModal = ({
-  isOpen = true,
+  isOpen = false,
   onClose = () => {},
   defaultTab = "login",
   onLoginSuccess = () => {},
@@ -30,6 +32,11 @@ const AuthModal = ({
   isArabic = true,
 }: AuthModalProps) => {
   const [activeTab, setActiveTab] = useState<"login" | "signup">(defaultTab);
+  
+  // Update active tab when defaultTab changes
+  useEffect(() => {
+    setActiveTab(defaultTab);
+  }, [defaultTab]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
