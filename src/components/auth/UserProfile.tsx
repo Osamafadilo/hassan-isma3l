@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import {
   DropdownMenu,
@@ -86,9 +87,15 @@ const UserProfile = ({
             {isArabic ? "حسابي" : "My Account"}
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={onProfile} className="cursor-pointer">
-            <User className={`${isArabic ? "ml-2" : "mr-2"} h-4 w-4`} />
-            <span>{isArabic ? "الملف الشخصي" : "Profile"}</span>
+          <DropdownMenuItem
+            onClick={onProfile}
+            className="cursor-pointer"
+            asChild
+          >
+            <Link href="/profile">
+              <User className={`${isArabic ? "ml-2" : "mr-2"} h-4 w-4`} />
+              <span>{isArabic ? "الملف الشخصي" : "Profile"}</span>
+            </Link>
           </DropdownMenuItem>
           <DropdownMenuItem onClick={onSettings} className="cursor-pointer">
             <Settings className={`${isArabic ? "ml-2" : "mr-2"} h-4 w-4`} />

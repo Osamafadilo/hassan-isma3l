@@ -3,7 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook";
 import connectToDatabase from "./mongodb";
-import User from "@/models/User";
+import User from "@/backend/models/User";
 import bcrypt from "bcryptjs";
 
 export const authOptions: NextAuthOptions = {

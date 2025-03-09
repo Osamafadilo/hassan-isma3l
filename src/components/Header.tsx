@@ -15,20 +15,13 @@ const AuthModal = dynamic(() => import("@/components/auth/AuthModal"), {
 });
 
 interface HeaderProps {
-  isAuthenticated?: boolean;
-  user?: {
-    name: string;
-    email: string;
-    avatar?: string;
-    initials?: string;
-    userType?: "customer" | "provider";
-  };
-  onLogout?: () => void;
   className?: string;
   isArabic?: boolean;
 }
 
 const Header = ({
+  className,
+  isArabic = true,
   isAuthenticated = false,
   user = {
     name: "John Doe",
@@ -37,8 +30,6 @@ const Header = ({
     userType: "customer",
   },
   onLogout = () => console.log("Logout clicked"),
-  className,
-  isArabic = true,
 }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeAuthModal, setActiveAuthModal] = useState<
@@ -63,13 +54,13 @@ const Header = ({
   const handleLoginSuccess = (userData: any) => {
     console.log("Login successful", userData);
     setActiveAuthModal(null);
-    // Here you would typically update your auth state
+    setShowModal(false);
   };
 
   const handleSignupSuccess = (userData: any) => {
     console.log("Signup successful", userData);
     setActiveAuthModal(null);
-    // Here you would typically update your auth state
+    setShowModal(false);
   };
 
   return (

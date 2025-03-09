@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Eye, EyeOff, AlertCircle, Mail, Lock } from "lucide-react";
